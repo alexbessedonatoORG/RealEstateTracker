@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { supabase } from "../../../../../../app/routes/Supabase/SupabaseClient";
+import { supabase } from "../../../../../../services/SupaServices/Supabase/SupabaseClient";
 import { $auth } from "../../../../../../store/AuthStore"; // Importa tu store
 
 interface AddPropertyFormProps {

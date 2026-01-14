@@ -1,4 +1,4 @@
-import { supabase } from "../../../app/routes/Supabase/SupabaseClient";
+import { supabase } from "../Supabase/SupabaseClient";
 import { LoginForm } from "../../../shared/Header/components/Login/LoginForm/LoginForm";
 
 export const loginSupaService = async (

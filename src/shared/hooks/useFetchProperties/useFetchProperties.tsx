@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { supabase } from '../../../app/routes/Supabase/SupabaseClient';
+import { supabase } from '../../../services/SupaServices/Supabase/SupabaseClient';
 import { useStore } from '@nanostores/react';
 import { $auth } from '../../../store/AuthStore';
 

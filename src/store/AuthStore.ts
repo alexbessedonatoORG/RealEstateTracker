@@ -1,5 +1,5 @@
 import { map } from "nanostores";
-import { supabase } from "../app/routes/Supabase/SupabaseClient";
+import { supabase } from "../services/SupaServices/Supabase/SupabaseClient";
 import type { User } from "@supabase/supabase-js";
 
 export const $auth = map<{
