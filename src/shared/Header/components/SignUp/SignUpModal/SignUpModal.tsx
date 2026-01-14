@@ -1,11 +1,11 @@
 import { SignUpForm } from "../SignUpForm/SignUpForm";
 
-interface LoginModalProps {
+interface SignUpModalProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-export const SignUpModal = ({ isOpen, onClose }: LoginModalProps) => {
+export const SignUpModal = ({ isOpen, onClose }: SignUpModalProps) => {
 
     if (!isOpen) return null;
 

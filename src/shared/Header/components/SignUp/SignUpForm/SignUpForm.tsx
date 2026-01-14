@@ -1,11 +1,11 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { supabase } from "../../../../../app/routes/Supabase/SupabaseClient";
+import { signUpSupaService } from "../../../../../services/SupaServices/SignUpSupaService/signUpSupaService";
 
 interface SignUpFormProps {
     onClose: () => void;
 }
 
-interface SignUpForm {
+export interface SignUpForm {
     email: string;
     password: string;
     username: string;
@@ -16,21 +16,9 @@ export const SignUpForm = ({ onClose }: SignUpFormProps) => {
     const { register, handleSubmit } = useForm<SignUpForm>();
 
     const onSubmit: SubmitHandler<SignUpForm> = async (data) => {
-        const { error } = await supabase.auth.signUp({
-            email: data.email,
-            password: data.password,
-            options: {
-                data: {
-                    display_name: data.username,
-                }
-            }
-        });
 
-        if (error) alert(error.message);
-        else {
-            console.log("Sign Up successful");
-            onClose();
-        };
+        await signUpSupaService(data, onClose);
+
     };
 
     return (
