@@ -1,6 +1,6 @@
 import { useGetDate } from "../../../../shared/hooks/useGetDate/useGetDate"
 import { PropertyInfoList } from "../PropertyInfoList/PropertyInfoList"
-import { $auth } from "../../../../store/AuthContext";
+import { $auth } from "../../../../store/AuthStore";
 import { useStore } from "@nanostores/react";
 import { AddPropertyButton } from "../../../../shared/Header/components/AddPropertyButton/AddPropertyButton";
 

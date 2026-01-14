@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { supabase } from '../../../app/routes/Supabase/SupabaseClient';
 import { useStore } from '@nanostores/react';
-import { $auth } from '../../../store/AuthContext';
+import { $auth } from '../../../store/AuthStore';
 
 // Senior Tip: Define types in a shared file, but keep it here for now
 interface Property {

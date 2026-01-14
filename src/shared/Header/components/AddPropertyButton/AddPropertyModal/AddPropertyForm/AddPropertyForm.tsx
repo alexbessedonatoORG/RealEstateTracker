@@ -1,6 +1,6 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { supabase } from "../../../../../../app/routes/Supabase/SupabaseClient";
-import { $auth } from "../../../../../../store/AuthContext"; // Importa tu store
+import { $auth } from "../../../../../../store/AuthStore"; // Importa tu store
 
 interface AddPropertyFormProps {
     onClose: () => void;

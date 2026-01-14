@@ -3,7 +3,7 @@ import { Login } from "./components/Login/Login"
 import { SignUp } from "./components/SignUp/SignUp"
 import { Logout } from "./components/Logout/Logout";
 import { useStore } from "@nanostores/react";
-import { $auth } from "../../store/AuthContext";
+import { $auth } from "../../store/AuthStore";
 
 export const Header = () => {
 
