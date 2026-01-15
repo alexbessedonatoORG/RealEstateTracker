@@ -19,12 +19,9 @@ export const PropertiesCard = () => {
                                 <p className="text-lg text-gray-800 font-bold">Properties Summary</p>
                                 <p className="text-gray-500">updated {date}</p>
                             </div>
-
                             {/* El Botón alineado a la derecha */}
                             <AddPropertyButton />
-
                         </div>
-
                         <PropertyInfoList />
                     </>
                 ) : (

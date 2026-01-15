@@ -1,4 +1,7 @@
 import { useFetchProperties } from "../../../../shared/hooks/useFetchProperties/useFetchProperties";
+import { DocumentUpload } from "../DocumentUpload/DocumentUpload";
+import { SignedUrlLink } from "../../../../services/SupaServices/SignedURL/SignedUrlLink";
+
 interface Property {
     id: string;
     user_id: string;
@@ -47,8 +50,8 @@ export const PropertyInfoList = () => {
 
                     <div className="flex justify-center">
                         {property.insurance_url ? (
-                            <a href={property.insurance_url} target="_blank" className="text-blue-500 hover:underline text-xs font-bold">VIEW INSURANCE</a>
-                        ) : <span className="text-blue-500">Upload Insurance</span>}
+                            <SignedUrlLink propertyInsuranceURL={property.insurance_url} />
+                        ) : <DocumentUpload propertyId={property.id} property={property.name ?? ""} type="InsuranceContracts" />}
                     </div>
 
                     <div className="flex justify-center">
