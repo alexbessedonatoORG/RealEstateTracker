@@ -1,6 +1,6 @@
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
-import { MainLayout } from '../../shared/MainLayout/MainLayout';
-import { Dashboard } from '../../features/Dashboard/Dashboard';
+import { MainLayout } from '../../common/components/MainLayout/MainLayout';
+import { Dashboard } from '../../pages/Dashboard/Dashboard';
 
 export const rootRoute = createRootRoute({
     component: MainLayout,
