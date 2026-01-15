@@ -24,7 +24,7 @@ export const LoginForm = ({ onClose }: LoginFormProps) => {
                 <input placeholder="Email" className="p-2 border border-black rounded-sm" {...register("email", { required: true })} />
             </div>
             <div className="pt-4 flex flex-col">
-                <input placeholder="Password" className="p-2 border border-black rounded-sm" {...register("password", { required: true })} />
+                <input type="password" placeholder="Password" className="p-2 border border-black rounded-sm" {...register("password", { required: true })} />
             </div>
 
             <input className="pt-6" type="submit" />
