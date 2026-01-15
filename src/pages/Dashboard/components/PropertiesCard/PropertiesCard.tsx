@@ -10,12 +10,12 @@ export const PropertiesCard = () => {
 
     return (
         <div className="flex items-center justify-center p-6">
-            <div className="w-full max-w-7xl ring-1 ring-black/10 bg-white/10 shadow-lg rounded-3xl p-8">
+            <div className="bg-white w-full max-w-7xl   shadow-lg rounded-3xl p-8">
                 {user ? (
                     <>
-                        <div className="flex items-center justify-between border-b border-gray-400 pb-4">
+                        <div className="flex items-center justify-between pb-4">
                             <div>
-                                <p className="text-lg text-gray-800 font-bold">Properties Summary</p>
+                                <p className="text-3xl text-gray-800 font-bold">Property Portfolio Summary</p>
                                 <p className="text-gray-500">updated {date}</p>
                             </div>
                             <AddPropertyButton />

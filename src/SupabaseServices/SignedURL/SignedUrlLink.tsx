@@ -1,4 +1,6 @@
 import { useGetSignedURL } from "../../common/hooks/useGetSignedURL/useGetSignedURL";
+import { LiaFileContractSolid } from "react-icons/lia";
+import { FaRegEye } from "react-icons/fa";
 
 interface SignedUrlLinkProps {
     propertyURL: string;
@@ -25,17 +27,19 @@ export const SignedUrlLink = ({ propertyURL, type }: SignedUrlLinkProps) => {
         <a
             href="#"
             onClick={handleViewClick}
-            className="text-blue-500 hover:underline text-xs font-bold cursor-pointer"
+            className="flex items-center gap-2 text-blue-800 hover:underline font-bold cursor-pointer"
         >
-            VIEW INSURANCE
+            <FaRegEye className="text-xl" />
+            View Insurance
         </a>
     ) : (
         <a
             href="#"
             onClick={handleViewClick}
-            className="text-blue-500 hover:underline text-xs font-bold cursor-pointer"
+            className="flex items-center gap-2 text-blue-800 hover:underline font-bold cursor-pointer"
         >
-            VIEW CONTRACT
+            <LiaFileContractSolid className="text-xl" />
+            View Contract
         </a>
     );
 };

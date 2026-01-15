@@ -1,5 +1,7 @@
 import { useRef } from "react"
 import { FileUploadAndLinkService } from "../../../../SupabaseServices/FileUploadService/FileUploadSupaService";
+import { MdOutlineFileUpload } from "react-icons/md";
+
 
 interface DocumentUploadProps {
     propertyId: string;
@@ -33,8 +35,9 @@ export const DocumentUpload = ({ propertyId, property, type }: DocumentUploadPro
 
             <button
                 onClick={handleButtonClick}
-                className="text-blue-500 p-2 rounded underline font-bold"
+                className="flex items-center gap-2 text-blue-800 p-2 rounded font-bold cursor-pointer"
             >
+                <MdOutlineFileUpload className="text-3xl" />
                 Upload File
             </button>
         </div>
