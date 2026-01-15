@@ -41,7 +41,7 @@ export const PropertyInfoList = () => {
                 {properties.map((property: Property) => (
                     <div
                         key={property.id}
-                        className={`${rowStyle} py-5 hover:bg-gray-50/50 transition-colors`}
+                        className={`${rowStyle} py-5 hover:bg-gray-200 transition-colors`}
                     >
                         {/* ... your row content ... */}
                         <div className="flex flex-col min-w-0">
