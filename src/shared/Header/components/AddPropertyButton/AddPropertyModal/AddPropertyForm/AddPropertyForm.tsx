@@ -1,6 +1,6 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { supabase } from "../../../../../../services/SupaServices/Supabase/SupabaseClient";
-import { $auth } from "../../../../../../store/AuthStore"; // Importa tu store
+import { $auth } from "../../../../../../store/AuthStore";
 
 interface AddPropertyFormProps {
     onClose: () => void;
@@ -19,7 +19,6 @@ export const AddPropertyForm = ({ onClose }: AddPropertyFormProps) => {
     const { register, handleSubmit, reset } = useForm<AddPropertyForm>();
 
     const onSubmit: SubmitHandler<AddPropertyForm> = async (data) => {
-        // Obtenemos el ID del usuario logueado desde el store
         const { user } = $auth.get();
 
         if (!user) {
@@ -33,11 +32,11 @@ export const AddPropertyForm = ({ onClose }: AddPropertyFormProps) => {
                 {
                     name: data.name,
                     address: data.address,
-                    rent: Number(data.rent), // Convertimos a número por seguridad
+                    rent: Number(data.rent),
                     mortgage: Number(data.mortgage),
                     insurance_url: data.insurance_url,
                     contract_url: data.contract_url,
-                    user_id: user.id // ¡Vital para que RLS te deje guardarlo!
+                    user_id: user.id
                 }
             ]);
 
@@ -45,7 +44,7 @@ export const AddPropertyForm = ({ onClose }: AddPropertyFormProps) => {
             alert(error.message);
         } else {
             console.log("Property added successfully");
-            reset(); // Limpia el formulario
+            reset();
             onClose();
         }
     };

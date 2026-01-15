@@ -1,10 +1,9 @@
 import { supabase } from "../../../services/SupaServices/Supabase/SupabaseClient";
 
-export const useGetSignedURL = async (propertyInsuranceURL: string) => {
-    // Supabase returns { data: { signedUrl: string }, error }
+export const useGetSignedURL = async (propertyURL: string) => {
     const { data, error } = await supabase.storage
         .from("PropertyContracts")
-        .createSignedUrl(propertyInsuranceURL, 60);
+        .createSignedUrl(propertyURL, 60);
 
     if (error) {
         console.error("Error generating signed URL:", error.message);

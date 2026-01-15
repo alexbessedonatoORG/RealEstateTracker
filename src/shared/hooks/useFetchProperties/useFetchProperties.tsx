@@ -3,7 +3,6 @@ import { supabase } from '../../../services/SupaServices/Supabase/SupabaseClient
 import { useStore } from '@nanostores/react';
 import { $auth } from '../../../store/AuthStore';
 
-// Senior Tip: Define types in a shared file, but keep it here for now
 interface Property {
     id: string;
     user_id: string;

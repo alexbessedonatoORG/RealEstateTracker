@@ -50,14 +50,14 @@ export const PropertyInfoList = () => {
 
                     <div className="flex justify-center">
                         {property.insurance_url ? (
-                            <SignedUrlLink propertyInsuranceURL={property.insurance_url} />
+                            <SignedUrlLink propertyURL={property.insurance_url} type="InsuranceContracts" />
                         ) : <DocumentUpload propertyId={property.id} property={property.name ?? ""} type="InsuranceContracts" />}
                     </div>
 
                     <div className="flex justify-center">
                         {property.contract_url ? (
-                            <a href={property.contract_url} target="_blank" className="text-blue-500 hover:underline text-xs font-bold">VIEW CONTRACT</a>
-                        ) : <span className="text-blue-500">Upload Contract</span>}
+                            <SignedUrlLink propertyURL={property.contract_url} type="PropertyContracts" />
+                        ) : <DocumentUpload propertyId={property.id} property={property.name ?? ""} type="PropertyContracts" />}
                     </div>
                 </div>
             ))}
