@@ -18,7 +18,7 @@ export const SideBar = () => {
     };
 
     return (
-        <div className="flex flex-col bg-gray-200 text-xl text-blue-950 h-screen w-64">
+        <div className="flex flex-col bg-gray-200 text-xl text-blue-950 min-h-screen w-64">
 
             <div
                 onClick={() => setSelected("Properties")}
