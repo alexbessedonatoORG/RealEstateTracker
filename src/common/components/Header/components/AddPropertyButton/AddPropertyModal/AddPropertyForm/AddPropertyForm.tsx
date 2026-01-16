@@ -43,7 +43,6 @@ export const AddPropertyForm = ({ onClose }: AddPropertyFormProps) => {
         if (error) {
             alert(error.message);
         } else {
-            console.log("Property added successfully");
             reset();
             onClose();
         }

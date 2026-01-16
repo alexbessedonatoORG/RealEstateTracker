@@ -1,6 +1,6 @@
-import { useFetchProperties } from "../../../../common/hooks/useFetchProperties/useFetchProperties";
-import { DocumentUpload } from "../DocumentUpload/DocumentUpload";
-import { SignedUrlLink } from "../../../../SupabaseServices/SignedURL/SignedUrlLink";
+import { useFetchProperties } from "../../../../../common/hooks/useFetchProperties/useFetchProperties";
+import { DocumentUpload } from "../../DocumentUpload/DocumentUpload";
+import { SignedUrlLink } from "../../../../../SupabaseServices/SignedURL/SignedUrlLink";
 
 interface Property {
     id: string;
@@ -21,13 +21,9 @@ export const PropertyInfoList = () => {
     if (loading) return <div className="p-10 text-center text-gray-500">Loading properties...</div>;
 
     return (
-        /* FIX: Removed 'py-4' and used 'pt-4' only. 
-           'overflow-hidden' is critical here so the last row's background 
-           doesn't bleed over the rounded corners.
-        */
+       
         <div className="border border-gray-200 rounded-3xl w-full pt-4 bg-gray-100 shadow-sm overflow-hidden mt-8">
 
-            {/* Header Row */}
             <div className={`${rowStyle} text-black text-md uppercase border-b border-gray-200 pb-4`}>
                 <p>Property</p>
                 <p className="text-center">Rent</p>
@@ -36,14 +32,12 @@ export const PropertyInfoList = () => {
                 <p className="text-center">Contract</p>
             </div>
 
-            {/* Property Rows */}
             <div className="divide-y divide-gray-200 bg-white">
                 {properties.map((property: Property) => (
                     <div
                         key={property.id}
                         className={`${rowStyle} py-5 hover:bg-gray-200 transition-colors`}
                     >
-                        {/* ... your row content ... */}
                         <div className="flex flex-col min-w-0">
                             <p className="font-semibold text-gray-800 truncate">
                                 {property.name || "Untitled"}

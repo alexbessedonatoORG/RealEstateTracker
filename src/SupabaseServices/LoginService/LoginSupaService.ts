@@ -12,7 +12,6 @@ export const loginSupaService = async (
 
   if (error) alert(error.message);
   else {
-    console.log("Login successful");
     onClose();
   }
 };

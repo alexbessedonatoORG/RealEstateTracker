@@ -16,7 +16,6 @@ export const signUpSupaService = async (
 
   if (error) alert(error.message);
   else {
-    console.log("Sign Up successful");
     onClose();
   }
 };

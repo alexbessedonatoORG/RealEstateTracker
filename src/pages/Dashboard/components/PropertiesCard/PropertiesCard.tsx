@@ -1,5 +1,5 @@
 import { useGetDate } from "../../../../common/hooks/useGetDate/useGetDate"
-import { PropertyInfoList } from "../PropertyInfoList/PropertyInfoList"
+import { PropertyInfoList } from "./PropertyInfoList/PropertyInfoList"
 import { $auth } from "../../../../stores/AuthStore";
 import { useStore } from "@nanostores/react";
 import { AddPropertyButton } from "../../../../common/components/Header/components/AddPropertyButton/AddPropertyButton";
@@ -10,7 +10,7 @@ export const PropertiesCard = () => {
 
     return (
         <div className="flex items-center justify-center p-6">
-            <div className="bg-white w-full max-w-7xl   shadow-lg rounded-3xl p-8">
+            <div className="bg-white w-full shadow-lg rounded-3xl p-8">
                 {user ? (
                     <>
                         <div className="flex items-center justify-between pb-4">

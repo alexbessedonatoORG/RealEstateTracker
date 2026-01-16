@@ -24,8 +24,6 @@ export const FileUploadAndLinkService = async ({
     type
   )}/${cleanProperty}/${date}/${cleanProperty}.${fileExtension}`;
 
-  console.log("Uploading file to path:", filePath);
-  console.log(user.id);
   const { data: storageData, error: storageError } = await supabase.storage
     .from("PropertyContracts")
     .upload(filePath, file, { upsert: true });
@@ -35,7 +33,6 @@ export const FileUploadAndLinkService = async ({
   const columnToUpdate =
     type === "InsuranceContracts" ? "insurance_url" : "contract_url";
 
-  console.log("Linking file in database:", storageData.path);
   const { error: dbError } = await supabase
     .from("Property")
     .update({ [columnToUpdate]: storageData.path })
