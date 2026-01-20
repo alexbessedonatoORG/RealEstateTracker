@@ -1,6 +1,7 @@
 import { useFetchProperties } from "../../../../../common/hooks/useFetchProperties/useFetchProperties";
 import { DocumentUpload } from "../../DocumentUpload/DocumentUpload";
 import { SignedUrlLink } from "../../../../../SupabaseServices/SignedURL/SignedUrlLink";
+import { PropertyInfoListSkeleton } from "../../../../../skeleton/PropertyInfoListSkeleton";
 import type { Property } from "@types";
 
 export const PropertyInfoList = () => {
@@ -8,7 +9,7 @@ export const PropertyInfoList = () => {
 
     const { loading, properties } = useFetchProperties();
 
-    if (loading) return <div className="p-10 text-center text-gray-500">Loading properties...</div>;
+    if (loading) return <PropertyInfoListSkeleton />;
 
     return (
        

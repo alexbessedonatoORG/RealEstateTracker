@@ -4,6 +4,8 @@ import { ManagerCard } from "./components/ManagerCard/ManagerCard"
 import { TenantsCard } from "./components/TenantsCard/TenantsCard"
 
 export const Dashboard = () => {
+
+
     return (
         <div className="min-h-screen w-full bg-gray-100">
             <PropertiesCard />

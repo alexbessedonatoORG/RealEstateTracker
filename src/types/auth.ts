@@ -16,4 +16,3 @@ export interface SignUpFormValues {
   password: string;
   username: string;
 }
-

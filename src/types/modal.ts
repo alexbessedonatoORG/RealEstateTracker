@@ -13,3 +13,13 @@ export interface AddPropertyModalProps {
   onClose: () => void;
 }
 
+export interface AddManagerModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface AddTenantModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
