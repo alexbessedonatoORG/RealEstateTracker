@@ -18,7 +18,8 @@ export const Header = () => {
                 </div>
 
                 <div className="flex justify-center flex-none">
-                    <span className="font-bold text-blue-950">Navigations</span>
+                    {/* TODO add navigation or search bars */}
+                    <span className="font-bold text-blue-950"></span>
                 </div>
 
                 <div className="flex items-center justify-end gap-4 flex-1">
