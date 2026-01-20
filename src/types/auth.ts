@@ -2,7 +2,7 @@ export interface LoginFormProps {
   onClose: () => void;
 }
 
-export interface LoginForm {
+export interface LoginFormValues {
   email: string;
   password: string;
 }
@@ -11,7 +11,7 @@ export interface SignUpFormProps {
   onClose: () => void;
 }
 
-export interface SignUpForm {
+export interface SignUpFormValues {
   email: string;
   password: string;
   username: string;

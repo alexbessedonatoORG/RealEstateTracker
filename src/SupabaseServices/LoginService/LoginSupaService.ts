@@ -1,8 +1,8 @@
 import { supabase } from "../SupabaseClient";
-import { LoginForm } from "../../common/components/Header/components/Login/LoginForm/LoginForm";
+import type { LoginFormValues } from "@types";
 
 export const loginSupaService = async (
-  data: LoginForm,
+  data: LoginFormValues,
   onClose: () => void
 ) => {
   const { error } = await supabase.auth.signInWithPassword({

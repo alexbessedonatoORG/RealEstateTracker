@@ -1,12 +1,12 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { loginSupaService } from "../../../../../../SupabaseServices/LoginService/LoginSupaService";
-import type { LoginForm, LoginFormProps } from "@types";
+import type { LoginFormProps, LoginFormValues } from "@types";
 
 export const LoginForm = ({ onClose }: LoginFormProps) => {
 
-    const { register, handleSubmit } = useForm<LoginForm>();
+    const { register, handleSubmit } = useForm<LoginFormValues>();
 
-    const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+    const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
         loginSupaService(data, onClose);
     };
 
