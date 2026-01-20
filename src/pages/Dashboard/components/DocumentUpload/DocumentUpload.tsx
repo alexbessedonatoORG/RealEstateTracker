@@ -1,13 +1,7 @@
 import { useRef } from "react"
 import { FileUploadAndLinkService } from "../../../../SupabaseServices/FileUploadService/FileUploadSupaService";
 import { MdOutlineFileUpload } from "react-icons/md";
-
-
-interface DocumentUploadProps {
-    propertyId: string;
-    property: string;
-    type?: "PropertyContracts" | "InsuranceContracts";
-}
+import type { DocumentUploadProps } from "@types";
 
 export const DocumentUpload = ({ propertyId, property, type }: DocumentUploadProps) => {
 

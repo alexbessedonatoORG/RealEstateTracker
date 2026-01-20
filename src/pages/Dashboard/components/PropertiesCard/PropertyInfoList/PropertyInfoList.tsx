@@ -1,17 +1,7 @@
 import { useFetchProperties } from "../../../../../common/hooks/useFetchProperties/useFetchProperties";
 import { DocumentUpload } from "../../DocumentUpload/DocumentUpload";
 import { SignedUrlLink } from "../../../../../SupabaseServices/SignedURL/SignedUrlLink";
-
-interface Property {
-    id: string;
-    user_id: string;
-    address?: string;
-    name?: string;
-    rent?: number;
-    mortgage?: number;
-    insurance_url?: string;
-    contract_url?: string;
-}
+import type { Property } from "@types";
 
 export const PropertyInfoList = () => {
     const rowStyle = "grid grid-cols-[3fr_1fr_1fr_1fr_1fr] gap-4 items-center px-8";

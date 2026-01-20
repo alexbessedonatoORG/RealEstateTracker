@@ -10,10 +10,11 @@ export const Dashboard = () => {
             <div className="flex"> 
                    <div className="flex-1 p-6 self-start">
                     <FinancialOverviewCard/>
-                </div>
-                   <div className="flex-1 p-6 self-start">
-                    <ManagerCard/>
-                </div>
+                    </div>
+               
+            </div>
+            <div className="p-6">
+                <ManagerCard/>
             </div>
             <div className="p-6">
                 <TenantsCard/>

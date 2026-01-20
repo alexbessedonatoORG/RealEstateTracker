@@ -1,11 +1,7 @@
 import { useGetSignedURL } from "../../common/hooks/useGetSignedURL/useGetSignedURL";
 import { LiaFileContractSolid } from "react-icons/lia";
 import { FaRegEye } from "react-icons/fa";
-
-interface SignedUrlLinkProps {
-    propertyURL: string;
-    type?: "PropertyContracts" | "InsuranceContracts";
-}
+import type { SignedUrlLinkProps } from "@types";
 
 export const SignedUrlLink = ({ propertyURL, type }: SignedUrlLinkProps) => {
 

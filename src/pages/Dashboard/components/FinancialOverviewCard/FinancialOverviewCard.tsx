@@ -9,7 +9,7 @@ export const FinancialOverviewCard = () => {
     return (
         <div className="bg-white shadow-lg rounded-3xl p-8 h-full">
             <p className="text-3xl text-gray-800 font-bold">Financial Overview</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+            <div className="mt-6 grid w-full gap-6 sm:grid-cols-2 xl:grid-cols-4">
                 <TotalRentCard data={totalRent} />
                 <TotalMortgageCard data={totalMortgage} />
                 <TotalTaxCard data={totalTax} />

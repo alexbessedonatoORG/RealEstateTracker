@@ -1,12 +1,7 @@
 import { supabase } from "../SupabaseClient";
 import { $auth } from "../../stores/AuthStore";
 import { useSlugify } from "../../common/hooks/useSlugify/useSlugify";
-
-interface FileUploadSupaServiceProps {
-  property: string;
-  file: File;
-  type?: "PropertyContracts" | "InsuranceContracts";
-}
+import type { FileUploadSupaServiceProps } from "@types";
 
 export const FileUploadAndLinkService = async ({
   propertyId,

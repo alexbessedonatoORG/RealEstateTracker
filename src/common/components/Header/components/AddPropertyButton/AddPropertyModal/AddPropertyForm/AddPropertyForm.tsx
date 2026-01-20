@@ -1,19 +1,16 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { supabase } from "../../../../../../../SupabaseServices/SupabaseClient";
 import { $auth } from "../../../../../../../stores/AuthStore";
+import type { Property } from "@types";
 
 interface AddPropertyFormProps {
     onClose: () => void;
 }
 
-interface AddPropertyForm {
-    name: string;
-    address: string;
-    rent: number;
-    mortgage: number;
-    insurance_url: string;
-    contract_url: string;
-}
+type AddPropertyForm = Pick<
+    Property,
+    "name" | "address" | "rent" | "mortgage" | "insurance_url" | "contract_url"
+>;
 
 export const AddPropertyForm = ({ onClose }: AddPropertyFormProps) => {
     const { register, handleSubmit, reset } = useForm<AddPropertyForm>();

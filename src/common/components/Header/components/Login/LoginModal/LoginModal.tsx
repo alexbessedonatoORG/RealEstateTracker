@@ -1,9 +1,5 @@
 import { LoginForm } from "../LoginForm/LoginForm";
-
-interface LoginModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
+import type { LoginModalProps } from "@types";
 
 export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 

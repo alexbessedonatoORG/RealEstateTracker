@@ -24,8 +24,6 @@ export const useFetchFinancialData = () => {
                 return;
             }      
 
-            console.log(data);
-
             setTotalRent(data[0]?.total_rent || 0);
             setTotalMortgage(data[0]?.total_mortgage || 0);
             //TODO: TOTAL TAX IS BEING SET TO ZERO
@@ -37,7 +35,6 @@ export const useFetchFinancialData = () => {
         fetchData();
     }, [user, loading, totalTax]);
 
-    console.log("Financial Data:", { totalRent, totalMortgage, totalTax, netIncome });
 
     return { totalRent, totalMortgage, totalTax, netIncome };
 }

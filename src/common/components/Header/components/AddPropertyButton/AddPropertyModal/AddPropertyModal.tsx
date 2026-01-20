@@ -1,9 +1,5 @@
 import { AddPropertyForm } from "./AddPropertyForm/AddPropertyForm";
-
-interface AddPropertyModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
+import type { AddPropertyModalProps } from "@types";
 
 export const AddPropertyModal = ({ isOpen, onClose }: AddPropertyModalProps) => {
 

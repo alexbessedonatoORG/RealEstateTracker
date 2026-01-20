@@ -1,15 +1,6 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { signUpSupaService } from "../../../../../../SupabaseServices/SignUpService/signUpSupaService";
-
-interface SignUpFormProps {
-    onClose: () => void;
-}
-
-export interface SignUpForm {
-    email: string;
-    password: string;
-    username: string;
-}
+import type { SignUpForm, SignUpFormProps } from "@types";
 
 export const SignUpForm = ({ onClose }: SignUpFormProps) => {
 

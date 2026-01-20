@@ -1,9 +1,5 @@
 import { SignUpForm } from "../SignUpForm/SignUpForm";
-
-interface SignUpModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
+import type { SignUpModalProps } from "@types";
 
 export const SignUpModal = ({ isOpen, onClose }: SignUpModalProps) => {
 

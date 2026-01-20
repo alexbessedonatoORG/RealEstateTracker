@@ -2,17 +2,7 @@ import React, { useEffect } from 'react'
 import { supabase } from '../../../SupabaseServices/SupabaseClient';
 import { useStore } from '@nanostores/react';
 import { $auth } from '../../../stores/AuthStore';
-
-interface Property {
-    id: string;
-    user_id: string;
-    address?: string;
-    name?: string;
-    rent?: number;
-    mortgage?: number;
-    insurance_url?: string;
-    contract_url?: string;
-}
+import type { Property } from '@types';
 
 export const useFetchProperties = () => {
     const [properties, setProperties] = React.useState<Property[]>([]);
