@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { addManagerSupaService } from "../../../../../../../../SupabaseServices/AddManagerService/addManagerSupaService";
+import { addManagerSupaService } from "../../../../../../../../services/SupabaseServices/AddManagerService/addManagerSupaService";
 import type { AddManagerFormValues } from "@types";
 
 interface AddManagerFormProps {

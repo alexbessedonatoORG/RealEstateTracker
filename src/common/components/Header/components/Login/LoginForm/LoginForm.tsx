@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { loginSupaService } from "../../../../../../SupabaseServices/LoginService/LoginSupaService";
+import { loginSupaService } from "../../../../../../services/SupabaseServices/LoginService/LoginSupaService";
 import type { LoginFormProps, LoginFormValues } from "@types";
 
 export const LoginForm = ({ onClose }: LoginFormProps) => {

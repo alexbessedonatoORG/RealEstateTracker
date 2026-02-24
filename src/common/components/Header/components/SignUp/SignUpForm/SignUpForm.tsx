@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { signUpSupaService } from "../../../../../../SupabaseServices/SignUpService/signUpSupaService";
+import { signUpSupaService } from "../../../../../../services/SupabaseServices/SignUpService/signUpSupaService";
 import type { SignUpFormProps, SignUpFormValues } from "@types";
 
 export const SignUpForm = ({ onClose }: SignUpFormProps) => {

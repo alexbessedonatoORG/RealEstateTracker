@@ -1,4 +1,4 @@
-import { useGetSignedURL } from "../../common/hooks/useGetSignedURL/useGetSignedURL";
+import { useGetSignedURL } from '../../../common/hooks/useGetSignedURL/useGetSignedURL';
 import { LiaFileContractSolid } from "react-icons/lia";
 import { FaRegEye } from "react-icons/fa";
 import type { SignedUrlLinkProps } from "@types";

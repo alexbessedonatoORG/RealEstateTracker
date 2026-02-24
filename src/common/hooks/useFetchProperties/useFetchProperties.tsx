@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { supabase } from '../../../SupabaseServices/SupabaseClient';
+import { supabase } from '../../../services/SupabaseServices/SupabaseClient';
 import { useStore } from '@nanostores/react';
 import { $auth } from '../../../stores/AuthStore';
 import type { Property } from '@types';

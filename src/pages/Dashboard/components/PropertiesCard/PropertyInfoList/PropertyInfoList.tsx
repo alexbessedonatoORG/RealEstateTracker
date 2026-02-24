@@ -1,7 +1,7 @@
 import { useFetchProperties } from "../../../../../common/hooks/useFetchProperties/useFetchProperties";
 import { DocumentUpload } from "../../DocumentUpload/DocumentUpload";
-import { SignedUrlLink } from "../../../../../SupabaseServices/SignedURL/SignedUrlLink";
-import { PropertyInfoListSkeleton } from "../../../../../skeleton/PropertyInfoListSkeleton";
+import { SignedUrlLink } from "../../../../../services/SupabaseServices/SignedURL/SignedUrlLink";
+import { PropertyInfoListSkeleton } from "../../../../../common/components/skeletons/PropertyInfoListSkeleton";
 import type { Property } from "@types";
 
 export const PropertyInfoList = () => {
@@ -12,7 +12,7 @@ export const PropertyInfoList = () => {
     if (loading) return <PropertyInfoListSkeleton />;
 
     return (
-       
+
         <div className="border border-gray-200 rounded-3xl w-full pt-4 bg-gray-100 shadow-sm overflow-hidden mt-8">
 
             <div className={`${rowStyle} text-black text-md uppercase border-b border-gray-200 pb-4`}>

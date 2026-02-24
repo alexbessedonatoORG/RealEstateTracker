@@ -1,6 +1,6 @@
 import { supabase } from "../SupabaseClient";
-import { $auth } from "../../stores/AuthStore";
-import { useSlugify } from "../../common/hooks/useSlugify/useSlugify";
+import { $auth } from "../../../stores/AuthStore"; 
+import { useSlugify } from "../../../common/hooks/useSlugify/useSlugify";
 import type { FileUploadSupaServiceProps } from "@types";
 
 export const FileUploadAndLinkService = async ({

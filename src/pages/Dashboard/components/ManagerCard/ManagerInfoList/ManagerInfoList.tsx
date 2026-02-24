@@ -1,4 +1,4 @@
-import { ManagerInfoListSkeleton } from "../../../../../skeleton/ManagerInfoListSkeleton";
+import { ManagerInfoListSkeleton } from "../../../../../common/components/skeletons/ManagerInfoListSkeleton";
 import { useFetchManagers } from "../useFetchManagers/useFetchManagers";
 
 export const ManagerInfoList = () => {

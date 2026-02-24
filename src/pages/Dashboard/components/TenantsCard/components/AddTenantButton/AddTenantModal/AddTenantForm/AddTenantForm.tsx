@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { addTenantSupaService } from "../../../../../../../../SupabaseServices/AddTenantService/addTenantSupaService";
+import { addTenantSupaService } from "../../../../../../../../services/SupabaseServices/AddTenantService/addTenantSupaService";
 import { useFetchProperties } from "../../../../../../../../common/hooks/useFetchProperties/useFetchProperties";
 import type { AddTenantFormValues } from "@types";
 
@@ -86,7 +86,7 @@ export const AddTenantForm = ({ onClose }: AddTenantFormProps) => {
                 />
             </div>
 
-            
+
 
             <button
                 type="submit"

@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { FileUploadAndLinkService } from "../../../../SupabaseServices/FileUploadService/FileUploadSupaService";
+import { FileUploadAndLinkService } from "../../../../services/SupabaseServices/FileUploadService/FileUploadSupaService";
 import { MdOutlineFileUpload } from "react-icons/md";
 import type { DocumentUploadProps } from "@types";
 

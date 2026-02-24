@@ -3,11 +3,11 @@ import { TotalMortgageCard } from "./TotalMortgageCard/TotalMortgageCard"
 import { TotalRentCard } from "./TotalRentCard/TotalRentCard"
 import { TotalTaxCard } from "./TotalTaxCard/TotalTaxCard"
 import { useFetchFinancialData } from "./hooks/useFetchFinancialData"
-import { FinancialOverviewSkeleton } from "../../../../skeleton/FinancialOverviewSkeleton"
+import { FinancialOverviewSkeleton } from "../../../../common/components/skeletons/FinancialOverviewSkeleton"
 
 export const FinancialOverviewCard = () => {
-    
-    const {totalRent, totalMortgage, totalTax, netIncome, loading} = useFetchFinancialData();
+
+    const { totalRent, totalMortgage, totalTax, netIncome, loading } = useFetchFinancialData();
 
     if (loading) return <FinancialOverviewSkeleton />;
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../../../../../SupabaseServices/SupabaseClient";
+import { supabase } from "../../../../../services/SupabaseServices/SupabaseClient";
 import { $auth } from "../../../../../stores/AuthStore";
 import { useStore } from "@nanostores/react";
 
@@ -9,7 +9,7 @@ export const useFetchFinancialData = () => {
     const [totalTax, setTotalTax] = useState<number>(0);
     const [netIncome, setNetIncome] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
-    
+
     const { user } = useStore($auth);
 
     useEffect(() => {

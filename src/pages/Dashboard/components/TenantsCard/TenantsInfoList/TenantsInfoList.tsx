@@ -1,4 +1,4 @@
-import { TenantsInfoListSkeleton } from "../../../../../skeleton/TenantsInfoListSkeleton";
+import { TenantsInfoListSkeleton } from "../../../../../common/components/skeletons/TenantsInfoListSkeleton";
 import { useFetchTenants } from "../useFetchTenants/useFetchTenants";
 
 export const TenantsInfoList = () => {

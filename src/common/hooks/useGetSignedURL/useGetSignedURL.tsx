@@ -1,4 +1,4 @@
-import { supabase } from "../../../SupabaseServices/SupabaseClient";
+import { supabase } from "../../../services/SupabaseServices/SupabaseClient";
 
 export const useGetSignedURL = async (propertyURL: string) => {
     const { data, error } = await supabase.storage

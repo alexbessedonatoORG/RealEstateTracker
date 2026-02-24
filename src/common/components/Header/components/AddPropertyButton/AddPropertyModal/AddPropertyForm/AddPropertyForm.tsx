@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { supabase } from "../../../../../../../SupabaseServices/SupabaseClient";
+import { supabase } from "../../../../../../../services/SupabaseServices/SupabaseClient";
 import { $auth } from "../../../../../../../stores/AuthStore";
 import type { Property } from "@types";
 

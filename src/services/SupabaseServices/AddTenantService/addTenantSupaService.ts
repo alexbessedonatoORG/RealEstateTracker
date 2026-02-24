@@ -1,5 +1,5 @@
 import { supabase } from "../SupabaseClient";
-import { $auth } from "../../stores/AuthStore";
+import { $auth } from "../../../stores/AuthStore"; 
 import type { AddTenantFormValues } from "@types";
 
 export const addTenantSupaService = async (
