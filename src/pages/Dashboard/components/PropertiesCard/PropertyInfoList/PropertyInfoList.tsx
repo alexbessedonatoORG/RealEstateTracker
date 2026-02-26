@@ -37,7 +37,7 @@ export const PropertyInfoList = () => {
             )}
 
             {/* 2. THE SIDEBAR - Rendered once, sits on top of overlay */}
-            <div className={`fixed top-0 right-0 h-full w-200 bg-white shadow-2xl z-101 transform transition-transform duration-300 ${isPropertyDetailOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`fixed top-0 right-0 h-full w-150 bg-white shadow-2xl z-101 transform transition-transform duration-300 ${isPropertyDetailOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 {selectedProperty && <PropertyDetailSideBar property={selectedProperty} onClose={handleClosePropertyDetail} />}
             </div>
 
