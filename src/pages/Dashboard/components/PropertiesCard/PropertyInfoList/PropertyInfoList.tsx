@@ -31,7 +31,7 @@ export const PropertyInfoList = () => {
 
             {isPropertyDetailOpen && (
                 <div
-                    className="fixed inset-0 bg-black/40 backdrop-blur-sm z-100 transition-opacity"
+                    className="fixed inset-0 bg-black/20 backdrop-blur-xs z-100 transition-opacity"
                     onClick={handleClosePropertyDetail}
                 />
             )}
