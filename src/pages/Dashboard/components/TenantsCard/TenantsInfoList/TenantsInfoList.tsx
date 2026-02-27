@@ -15,8 +15,6 @@ export const TenantsInfoList = () => {
         return <div className="text-center text-gray-500 mt-8">No tenants found</div>;
     }
 
-    console.log(tenants);
-
     return (
         <div className="border border-gray-200 rounded-3xl w-full pt-4 bg-gray-100 shadow-sm overflow-hidden mt-8">
 
