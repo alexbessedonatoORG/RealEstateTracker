@@ -1,6 +1,7 @@
 import type { Property } from "@types";
 import { useForm } from '@tanstack/react-form'
 import { useState } from "react";
+import { EditPropertyFieldsService } from "../../../../../../services/SupabaseServices/EditPropertyFieldsService/EditPropertyFieldsService";
 
 interface PropertyDetailSideBarProps {
     property: Property;
@@ -13,8 +14,6 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
     const [newInsuranceFileUploaded, setNewInsuranceFileUploaded] = useState(false);
     const [newContractFileUploaded, setNewContractFileUploaded] = useState(false);
 
-    console.log(property)
-
     const PropertySliderForm = useForm({
         defaultValues: {
             propertyName: property.name ?? "",
@@ -25,7 +24,8 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
             propertyContract: (property.contract_url ?? null) as string | File | null,
         },
         onSubmit: async ({ value }) => {
-            console.log(value)
+            EditPropertyFieldsService({ property: { ...value, propertyId: property.id } });
+            onClose();
         }
     })
 

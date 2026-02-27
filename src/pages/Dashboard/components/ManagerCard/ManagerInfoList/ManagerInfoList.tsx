@@ -4,7 +4,6 @@ import { useFetchManagers } from "../useFetchManagers/useFetchManagers";
 export const ManagerInfoList = () => {
 
     const { loading, managers } = useFetchManagers();
-    console.log(managers);
 
     const rowStyle = "grid grid-cols-[1fr_1fr_1fr_1fr] gap-4 items-center px-8";
 
