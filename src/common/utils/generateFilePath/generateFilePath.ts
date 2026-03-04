@@ -14,7 +14,6 @@ interface PropertyData {
 type DocumentType = "InsuranceContracts" | "PropertyContracts";
 
 export const generateFilePath = (property: PropertyData, type: DocumentType): string => {
-    console.log("Generating file path for property:", property, "and type:", type);
         const user = $auth.get().user;
         if (!user) throw new Error("No authenticated user found");
 

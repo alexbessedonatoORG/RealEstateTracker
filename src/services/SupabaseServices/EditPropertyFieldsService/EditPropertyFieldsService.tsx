@@ -25,45 +25,35 @@ export const EditPropertyFieldsService = async (data: Data) => {
 
     const user = $auth.get().user;
     if (!user) throw new Error("No authenticated user found");
-    const InsuranceFilePath = generateFilePath(data.property, "InsuranceContracts");
-    const ContractFilePath = generateFilePath(data.property, "PropertyContracts");
 
 
-    const { data: insuranceStorageData, error: insuranceStorageError } = await supabase.storage
-        .from("PropertyContracts")
-        .upload(InsuranceFilePath, data.property.propertyInsurance as File, { upsert: true });
+    //first we upload insurance file into bucket
+    if (data.property.propertyInsurance instanceof File) {
+        const InsuranceFilePath = generateFilePath(data.property, "InsuranceContracts");
 
-    if (insuranceStorageError) throw insuranceStorageError;
+        const { data: insuranceStorageData, error: insuranceStorageError } = await supabase.storage
+            .from("PropertyContracts")
+            .upload(InsuranceFilePath, data.property.propertyInsurance as File, { upsert: true });
 
-    const { data: contractStorageData, error: contractStorageError } = await supabase.storage
-        .from("PropertyContracts")
-        .upload(ContractFilePath, data.property.propertyContract as File, { upsert: true });
+        if (insuranceStorageError) throw insuranceStorageError;
 
-    if (contractStorageError) throw contractStorageError;
-
-    const { error: dbInsuranceUploadError } = await supabase
-        .from("property")
-        .update({ ["insurance_url"]: insuranceStorageData.path })
-        .eq("id", data.property.propertyId);
-
-    if (dbInsuranceUploadError) {
-        console.error("Database link failed:", dbInsuranceUploadError.message);
-        return { success: false, error: dbInsuranceUploadError };
+        updatePayloadData.insurance_url = insuranceStorageData.path;
     }
 
-    const { error: dbContractUploadError } = await supabase
-        .from("property")
-        .update({ ["contract_url"]: contractStorageData.path })
-        .eq("id", data.property.propertyId);
+    //then we upload contract file into bucket
+    if (data.property.propertyContract instanceof File) {
+        const ContractFilePath = generateFilePath(data.property, "PropertyContracts");
 
-    if (dbContractUploadError) {
-        console.error("Database link failed:", dbContractUploadError.message);
-        return { success: false, error: dbContractUploadError };
+        const { data: contractStorageData, error: contractStorageError } = await supabase.storage
+            .from("PropertyContracts")
+            .upload(ContractFilePath, data.property.propertyContract as File, { upsert: true });
+
+        if (contractStorageError) throw contractStorageError;
+
+        updatePayloadData.contract_url = contractStorageData.path;
     }
 
-    updatePayloadData.contract_url = contractStorageData.path;
-    updatePayloadData.insurance_url = insuranceStorageData.path;
-
+    //then we update the database with the new info from the form, including the new urls for insurance and contract if they were updated
     const { error: dbUpdateError } = await supabase
         .from("property")
         .update(updatePayloadData)
