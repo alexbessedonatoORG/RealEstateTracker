@@ -6,6 +6,7 @@ import type { SignedUrlLinkProps } from "@types";
 export const SignedUrlLink = ({ propertyURL, type }: SignedUrlLinkProps) => {
 
     const handleViewClick = async (e: React.MouseEvent) => {
+        e.stopPropagation();
         e.preventDefault();
 
         try {

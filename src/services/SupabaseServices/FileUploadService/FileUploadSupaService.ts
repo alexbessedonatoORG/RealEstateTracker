@@ -29,7 +29,7 @@ export const FileUploadAndLinkService = async ({
     type === "InsuranceContracts" ? "insurance_url" : "contract_url";
 
   const { error: dbError } = await supabase
-    .from("Property")
+    .from("property")
     .update({ [columnToUpdate]: storageData.path })
     .eq("id", propertyId);
 

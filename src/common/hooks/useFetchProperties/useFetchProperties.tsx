@@ -19,7 +19,7 @@ export const useFetchProperties = () => {
 
             setLoading(true);
             const { data, error } = await supabase
-                .from('Property')
+                .from('property')
                 .select('*')
                 .eq('user_id', user.id)
                 .order('name', { ascending: true });

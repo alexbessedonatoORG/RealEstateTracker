@@ -42,7 +42,7 @@ export const EditPropertyFieldsService = async (data: Data) => {
     if (contractStorageError) throw contractStorageError;
 
     const { error: dbInsuranceUploadError } = await supabase
-        .from("Property")
+        .from("property")
         .update({ ["insurance_url"]: insuranceStorageData.path })
         .eq("id", data.property.propertyId);
 
@@ -52,7 +52,7 @@ export const EditPropertyFieldsService = async (data: Data) => {
     }
 
     const { error: dbContractUploadError } = await supabase
-        .from("Property")
+        .from("property")
         .update({ ["contract_url"]: contractStorageData.path })
         .eq("id", data.property.propertyId);
 
@@ -65,7 +65,7 @@ export const EditPropertyFieldsService = async (data: Data) => {
     updatePayloadData.insurance_url = insuranceStorageData.path;
 
     const { error: dbUpdateError } = await supabase
-        .from("Property")
+        .from("property")
         .update(updatePayloadData)
         .eq("id", data.property.propertyId);
 

@@ -4,6 +4,7 @@ import { useFetchTenants } from "../useFetchTenants/useFetchTenants";
 export const TenantsInfoList = () => {
 
     const { loading, tenants } = useFetchTenants();
+    console.log("tennants info list", tenants)
 
     const rowStyle = "grid grid-cols-[3fr_2fr_2fr_2fr_1fr] gap-4 items-center px-8";
 

@@ -22,12 +22,12 @@ export const useFetchTenants = () => {
                 .from('tenants')
                 .select(`
                     *,
-                    Property!inner (
+                    property!inner (
                         user_id,
                         name
                     )
                 `)
-                .eq('Property.user_id', user.id);
+                .eq('property.user_id', user.id);
 
             if (error) {
                 console.error("Error fetching tenants:", error.message);
@@ -35,9 +35,9 @@ export const useFetchTenants = () => {
                 return;
             }
 
-            const mappedTenants: Tenant[] = (data ?? []).map((t: { id: string; property_id: string; full_name: string; email: string; phone: string; end_of_contract: string; Property: { name: string } }) => ({
+            const mappedTenants: Tenant[] = (data ?? []).map((t: { id: string; property_id: string; full_name: string; email: string; phone: string; end_of_contract: string; property: { name: string } }) => ({
                 id: t.id,
-                property: t.Property?.name || "",
+                property: t.property?.name || "",
                 property_id: t.property_id,
                 name: t.full_name,
                 email: t.email,
