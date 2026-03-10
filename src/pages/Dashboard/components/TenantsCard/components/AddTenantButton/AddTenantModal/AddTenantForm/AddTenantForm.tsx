@@ -2,6 +2,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { addTenantSupaService } from "../../../../../../../../services/SupabaseServices/AddTenantService/addTenantSupaService";
 import { useFetchProperties } from "../../../../../../../../common/hooks/useFetchProperties/useFetchProperties";
 import type { AddTenantFormValues } from "@types";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface AddTenantFormProps {
     onClose: () => void;
@@ -10,6 +11,8 @@ interface AddTenantFormProps {
 export const AddTenantForm = ({ onClose }: AddTenantFormProps) => {
     const { register, handleSubmit, reset, setValue } = useForm<AddTenantFormValues>();
     const { properties, loading } = useFetchProperties();
+    const queryClient = useQueryClient();
+
 
     const handlePropertyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedId = e.target.value;
@@ -21,7 +24,8 @@ export const AddTenantForm = ({ onClose }: AddTenantFormProps) => {
     };
 
     const onSubmit: SubmitHandler<AddTenantFormValues> = async (data) => {
-        await addTenantSupaService(data, () => {
+        await addTenantSupaService(data, async () => {
+            await queryClient.invalidateQueries({ queryKey: ["tenants"] })
             reset();
             onClose();
         });

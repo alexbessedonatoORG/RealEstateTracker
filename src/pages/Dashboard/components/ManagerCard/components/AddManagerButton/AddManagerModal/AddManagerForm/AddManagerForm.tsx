@@ -1,6 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { addManagerSupaService } from "../../../../../../../../services/SupabaseServices/AddManagerService/addManagerSupaService";
 import type { AddManagerFormValues } from "@types";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface AddManagerFormProps {
     onClose: () => void;
@@ -8,9 +9,11 @@ interface AddManagerFormProps {
 
 export const AddManagerForm = ({ onClose }: AddManagerFormProps) => {
     const { register, handleSubmit, reset } = useForm<AddManagerFormValues>();
+    const queryClient = useQueryClient();
 
     const onSubmit: SubmitHandler<AddManagerFormValues> = async (data) => {
-        await addManagerSupaService(data, () => {
+        await addManagerSupaService(data, async () => {
+            await queryClient.invalidateQueries({ queryKey: ['managers'] });
             reset();
             onClose();
         });

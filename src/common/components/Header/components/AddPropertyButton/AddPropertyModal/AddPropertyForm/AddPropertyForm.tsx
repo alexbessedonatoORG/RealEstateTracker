@@ -1,48 +1,28 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { supabase } from "../../../../../../../services/SupabaseServices/SupabaseClient";
-import { $auth } from "../../../../../../../stores/AuthStore";
 import type { Property } from "@types";
+import { useQueryClient } from "@tanstack/react-query";
+import { addPropertySupaService } from "../../../../../../../services/SupabaseServices/AddPropertyService/AddPropertySupaService";
 
 interface AddPropertyFormProps {
     onClose: () => void;
 }
 
-type AddPropertyForm = Pick<
+type AddPropertyFormValues = Pick<
     Property,
     "name" | "address" | "rent" | "mortgage" | "insurance_url" | "contract_url"
 >;
 
 export const AddPropertyForm = ({ onClose }: AddPropertyFormProps) => {
-    const { register, handleSubmit, reset } = useForm<AddPropertyForm>();
+    const { register, handleSubmit, reset } = useForm<AddPropertyFormValues>();
+    const queryClient = useQueryClient()
 
-    const onSubmit: SubmitHandler<AddPropertyForm> = async (data) => {
-        const { user } = $auth.get();
-
-        if (!user) {
-            alert("You must be logged in to add a property");
-            return;
-        }
-
-        const { error } = await supabase
-            .from('Property')
-            .insert([
-                {
-                    name: data.name,
-                    address: data.address,
-                    rent: Number(data.rent),
-                    mortgage: Number(data.mortgage),
-                    insurance_url: data.insurance_url,
-                    contract_url: data.contract_url,
-                    user_id: user.id
-                }
-            ]);
-
-        if (error) {
-            alert(error.message);
-        } else {
+    const onSubmit: SubmitHandler<AddPropertyFormValues> = async (data) => {
+        await addPropertySupaService(data as Property, async () => {
+            await queryClient.invalidateQueries({ queryKey: ["properties"] })
+            await queryClient.invalidateQueries({ queryKey: ['financials'] });
             reset();
             onClose();
-        }
+        })
     };
 
     return (

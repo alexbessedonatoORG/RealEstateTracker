@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../../../../../services/SupabaseServices/SupabaseClient";
 import { $auth } from "../../../../../stores/AuthStore";
 import { useStore } from "@nanostores/react";
 import type { Tenant } from "@types";
 
 export const useFetchTenants = () => {
-    const [tenants, setTenants] = useState<Tenant[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const { user } = useStore($auth);
 
-    useEffect(() => {
-        const fetchTenants = async () => {
-            if (!user?.id) {
-                setLoading(false);
-                return;
-            }
+    const { data: tenants = [], isLoading: loading } = useQuery({
+        queryKey: ['tenants'],
 
-            setLoading(true);
+        enabled: !!user?.id,
 
+        queryFn: async () => {
             const { data, error } = await supabase
                 .from('tenants')
                 .select(`
@@ -27,15 +22,14 @@ export const useFetchTenants = () => {
                         name
                     )
                 `)
-                .eq('property.user_id', user.id);
+                .eq('property.user_id', user!.id);
 
             if (error) {
                 console.error("Error fetching tenants:", error.message);
-                setLoading(false);
-                return;
+                throw error;
             }
 
-            const mappedTenants: Tenant[] = (data ?? []).map((t: { id: string; property_id: string; full_name: string; email: string; phone: string; end_of_contract: string; property: { name: string } }) => ({
+            const mappedTenants: Tenant[] = (data ?? []).map((t: any) => ({
                 id: t.id,
                 property: t.property?.name || "",
                 property_id: t.property_id,
@@ -45,12 +39,9 @@ export const useFetchTenants = () => {
                 endOfContract: t.end_of_contract,
             }));
 
-            setTenants(mappedTenants);
-            setLoading(false);
-        };
-
-        fetchTenants();
-    }, [user?.id]);
+            return mappedTenants;
+        }
+    });
 
     return { loading, tenants };
-}
+};
