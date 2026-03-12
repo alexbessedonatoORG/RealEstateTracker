@@ -2,6 +2,8 @@ import type { Property } from "@types";
 import { useForm } from '@tanstack/react-form'
 import { useState } from "react";
 import { EditPropertyFieldsService } from "../../../../../../services/SupabaseServices/EditPropertyFieldsService/EditPropertyFieldsService";
+import { AddressAndDropdown } from "./AddressAndDropdown/AddressAndDropdown";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface PropertyDetailSideBarProps {
     property: Property;
@@ -14,6 +16,8 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
     const [newInsuranceFileUploaded, setNewInsuranceFileUploaded] = useState(false);
     const [newContractFileUploaded, setNewContractFileUploaded] = useState(false);
 
+    const queryClient = useQueryClient();
+
     const PropertySliderForm = useForm({
         defaultValues: {
             propertyName: property.name ?? "",
@@ -24,7 +28,8 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
             propertyContract: (property.contract_url ?? null) as string | File | null,
         },
         onSubmit: async ({ value }) => {
-            EditPropertyFieldsService({ property: { ...value, propertyId: property.id } });
+            await EditPropertyFieldsService({ property: { ...value, propertyId: property.id } });
+            await queryClient.invalidateQueries({ queryKey: ['properties'] });
             onClose();
         }
     })
@@ -68,18 +73,7 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
 
                     <PropertySliderForm.Field name="propertyAddress">
                         {(field) => (
-                            <div className="flex flex-col gap-2">
-                                <label className="font-bold">
-                                    Property Address:
-                                </label>
-
-                                <input className="border border-gray-400 rounded-md w-full p-2 text-gray-800"
-                                    type="text"
-                                    placeholder={property.address}
-                                    value={field.state.value}
-                                    onChange={(e) => field.handleChange(e.target.value)}
-                                />
-                            </div>
+                            <AddressAndDropdown property={property} field={field} />
                         )}
                     </PropertySliderForm.Field>
 

@@ -7,7 +7,6 @@ export const useFetchFinancialData = () => {
     const { user } = useStore($auth);
 
     const { data, isLoading: loading } = useQuery({
-        // 1. Give it a brand new key!
         queryKey: ['financials', user?.id],
         enabled: !!user?.id,
 
@@ -20,10 +19,8 @@ export const useFetchFinancialData = () => {
                 throw error;
             }
 
-            // 2. Safely grab the first row
             const firstRow = rpcData?.[0] || {};
 
-            // 3. Return a clean object with your math already done
             return {
                 totalRent: firstRow.total_rent || 0,
                 totalMortgage: firstRow.total_mortgage || 0,
@@ -33,7 +30,6 @@ export const useFetchFinancialData = () => {
         }
     });
 
-    // 4. Fallback to zeroes if the data is still loading
     const {
         totalRent = 0,
         totalMortgage = 0,
