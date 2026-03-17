@@ -214,6 +214,7 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
                             onClick={() => {
                                 deletePropertySupaService(property.id, () => {
                                     queryClient.invalidateQueries({ queryKey: ['properties'] });
+                                    queryClient.invalidateQueries({ queryKey: ['financials'] });
                                     onClose();
                                 });
                             }}
