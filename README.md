@@ -1,4 +1,8 @@
-# Real Estate Tracker
+# 🏡 Real Estate Tracker
+
+> **🚀 Live Demo:** [real-estate-tracker-eosin.vercel.app](https://real-estate-tracker-eosin.vercel.app)
+
+Manage your real estate portfolio with ease. Keep track of your properties, tenants, and managers in one place and securely store insurance and contract documents
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
