@@ -1,6 +1,5 @@
 import { useDebounce } from "../../../../../../../common/hooks/useDebounce/useDebounce"
 import { useQuery } from "@tanstack/react-query"
-import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react"
 import type { Property } from "@types";
 
@@ -16,7 +15,6 @@ interface AddressAndDropdownProps {
 }
 
 export const AddressAndDropdown = ({ property, field }: AddressAndDropdownProps) => {
-    const queryClient = useQueryClient();
     const [showDropdown, setShowDropdown] = useState(false);
     const debounceAddress = useDebounce(field.state.value, 500);
 
