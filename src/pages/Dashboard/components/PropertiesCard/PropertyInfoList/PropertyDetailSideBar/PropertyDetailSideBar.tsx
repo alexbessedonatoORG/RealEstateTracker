@@ -4,6 +4,7 @@ import { useState } from "react";
 import { EditPropertyFieldsService } from "../../../../../../services/SupabaseServices/EditPropertyFieldsService/EditPropertyFieldsService";
 import { AddressAndDropdown } from "./AddressAndDropdown/AddressAndDropdown";
 import { useQueryClient } from "@tanstack/react-query";
+import { deletePropertySupaService } from "../../../../../../services/SupabaseServices/DeletePropertyService/deletePropertySupaService";
 
 interface PropertyDetailSideBarProps {
     property: Property;
@@ -204,6 +205,20 @@ export const PropertyDetailSideBar = ({ property, onClose }: PropertyDetailSideB
                             className="w-full bg-blue-950 hover:bg-blue-900 text-white font-semibold py-2 px-4 rounded-md shadow transition-colors"
                         >
                             Save Changes
+                        </button>
+                    </div>
+                    <div className="pt-4 border-t border-gray-200 mt-4">
+                        <button
+                            type="button"
+                            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md shadow transition-colors"
+                            onClick={() => {
+                                deletePropertySupaService(property.id, () => {
+                                    queryClient.invalidateQueries({ queryKey: ['properties'] });
+                                    onClose();
+                                });
+                            }}
+                        >
+                            Delete Property
                         </button>
                     </div>
                 </form>
