@@ -1,4 +1,4 @@
-import { useGetSignedURL } from '../../../common/hooks/useGetSignedURL/useGetSignedURL';
+import { GetSignedURLService } from "../../../../services/SupabaseServices/GetSignedUrlService/GetSignedURL";
 import { LiaFileContractSolid } from "react-icons/lia";
 import { FaRegEye } from "react-icons/fa";
 import type { SignedUrlLinkProps } from "@types";
@@ -10,7 +10,7 @@ export const SignedUrlLink = ({ propertyURL, type }: SignedUrlLinkProps) => {
         e.preventDefault();
 
         try {
-            const url = await useGetSignedURL(propertyURL);
+            const url = await GetSignedURLService(propertyURL);
             if (url) {
                 window.open(url, "_blank");
             }

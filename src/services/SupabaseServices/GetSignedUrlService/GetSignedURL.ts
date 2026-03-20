@@ -1,6 +1,6 @@
-import { supabase } from "../../../services/SupabaseServices/SupabaseClient";
+import { supabase } from "../SupabaseClient";
 
-export const useGetSignedURL = async (propertyURL: string) => {
+export const GetSignedURLService = async (propertyURL: string) => {
     const { data, error } = await supabase.storage
         .from("PropertyContracts")
         .createSignedUrl(propertyURL, 60);
