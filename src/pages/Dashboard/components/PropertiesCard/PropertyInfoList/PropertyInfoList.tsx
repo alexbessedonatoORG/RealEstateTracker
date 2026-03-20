@@ -1,6 +1,6 @@
 import { useFetchProperties } from "../../../../../common/hooks/useFetchProperties/useFetchProperties";
 import { DocumentUpload } from "../../DocumentUpload/DocumentUpload";
-import { SignedUrlLink } from "../../../../../services/SupabaseServices/SignedURL/SignedUrlLink";
+import { SignedUrlLink } from "../../SignedURL/SignedUrlLink";
 import { PropertyInfoListSkeleton } from "../../../../../common/components/skeletons/PropertyInfoListSkeleton";
 import type { Property } from "@types";
 import { useState } from "react";

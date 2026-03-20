@@ -1,7 +1,7 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useForm } from "@tanstack/react-form";
 import { addTenantSupaService } from "../../../../../../../../services/SupabaseServices/AddTenantService/addTenantSupaService";
 import { useFetchProperties } from "../../../../../../../../common/hooks/useFetchProperties/useFetchProperties";
-import type { AddTenantFormValues } from "@types";
+import type { Tenant } from "@types";
 import { useQueryClient } from "@tanstack/react-query";
 
 interface AddTenantFormProps {
@@ -9,86 +9,120 @@ interface AddTenantFormProps {
 }
 
 export const AddTenantForm = ({ onClose }: AddTenantFormProps) => {
-    const { register, handleSubmit, reset, setValue } = useForm<AddTenantFormValues>();
     const { properties, loading } = useFetchProperties();
     const queryClient = useQueryClient();
-
-
-    const handlePropertyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedId = e.target.value;
-        const selectedProperty = properties.find(p => p.id === selectedId);
-        if (selectedProperty) {
-            setValue("property_id", selectedProperty.id);
-            setValue("property", selectedProperty.name || "");
-        }
-    };
-
-    const onSubmit: SubmitHandler<AddTenantFormValues> = async (data) => {
-        await addTenantSupaService(data, async () => {
-            await queryClient.invalidateQueries({ queryKey: ["tenants"] })
-            reset();
-            onClose();
-        });
-    };
+    const form = useForm({
+        defaultValues: {
+            propertyId: "",
+            fullName: "",
+            email: "",
+            phone: "",
+            endOfContract: "",
+        } as Omit<Tenant, "id" | "createdAt" | "property">,
+        onSubmit: async ({ value }) => {
+            console.log("data being set", value);
+            await addTenantSupaService(value, async () => {
+                await queryClient.invalidateQueries({ queryKey: ["tenants"] });
+                form.reset();
+                onClose();
+            });
+        },
+    });
 
     return (
-        <form className="flex flex-col gap-4 p-2" onSubmit={handleSubmit(onSubmit)}>
-            <input type="hidden" {...register("property_id", { required: true })} />
-            <input type="hidden" {...register("property", { required: true })} />
-            <div className="flex flex-col">
-                <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Property</label>
-                <select
-                    className="p-2 border border-gray-300 rounded-md bg-gray-100"
-                    onChange={handlePropertyChange}
-                    defaultValue=""
-                    disabled={loading}
-                >
-                    <option value="">{loading ? "Loading properties..." : "Select a property"}</option>
-                    {properties.map((property) => (
-                        <option key={property.id} value={property.id}>
-                            {property.name || property.address || "Unnamed Property"}
-                        </option>
-                    ))}
-                </select>
-            </div>
+        <form
+            className="flex flex-col gap-4 p-2"
+            onSubmit={(e) => {
+                e.preventDefault();
+                form.handleSubmit();
+            }}
+        >
 
-            <div className="flex flex-col">
-                <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Name</label>
-                <input
-                    placeholder="John Doe"
-                    className="p-2 border border-gray-300 rounded-md"
-                    {...register("name", { required: true })}
-                />
-            </div>
+            <form.Field name="propertyId">
+                {(field) => (
+                    <div className="flex flex-col">
+                        <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Property</label>
+                        <select
+                            className="p-2 border border-gray-300 rounded-md bg-gray-100"
+                            onChange={(e) => {
+                                field.handleChange(e.target.value);
+                            }}
+                            value={field.state.value}
+                            disabled={loading}
+                            required
+                        >
+                            <option value="">{loading ? "Loading properties..." : "Select a property"}</option>
+                            {properties.map((property) => (
+                                <option key={property.id} value={property.id}>
+                                    {property.name || property.address || "Unnamed Property"}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
+            </form.Field>
 
-            <div className="flex flex-col">
-                <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Email</label>
-                <input
-                    type="email"
-                    placeholder="tenant@example.com"
-                    className="p-2 border border-gray-300 rounded-md"
-                    {...register("email", { required: true })}
-                />
-            </div>
+            <form.Field name="fullName">
+                {(field) => (
+                    <div className="flex flex-col">
+                        <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Name</label>
+                        <input
+                            placeholder="John Doe"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={field.state.value}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                            required
+                        />
+                    </div>
+                )}
+            </form.Field>
 
-            <div className="flex flex-col">
-                <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Phone</label>
-                <input
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    className="p-2 border border-gray-300 rounded-md"
-                    {...register("phone", { required: true })}
-                />
-            </div>
+            <form.Field name="email">
+                {(field) => (
+                    <div className="flex flex-col">
+                        <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Email</label>
+                        <input
+                            type="email"
+                            placeholder="tenant@example.com"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={field.state.value ?? ""}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                            required
+                        />
+                    </div>
+                )}
+            </form.Field>
 
-            <div className="flex flex-col">
-                <label className="text-xs font-bold text-gray-600 mb-1 uppercase">End of Contract</label>
-                <input
-                    type="date"
-                    className="p-2 border border-gray-300 rounded-md"
-                    {...register("endOfContract", { required: true })}
-                />
-            </div>
+            <form.Field name="phone">
+                {(field) => (
+                    <div className="flex flex-col">
+                        <label className="text-xs font-bold text-gray-600 mb-1 uppercase">Phone</label>
+                        <input
+                            type="tel"
+                            placeholder="(555) 123-4567"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={field.state.value ?? ""}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                            required
+                        />
+                    </div>
+                )}
+            </form.Field>
+
+            <form.Field name="endOfContract">
+                {(field) => (
+                    <div className="flex flex-col">
+                        <label className="text-xs font-bold text-gray-600 mb-1 uppercase">End of Contract</label>
+                        <input
+                            type="date"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={field.state.value ?? ""}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                            required
+                        />
+                    </div>
+                )}
+            </form.Field>
 
 
 

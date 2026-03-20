@@ -1,5 +1,9 @@
 import { AddTenantForm } from "./AddTenantForm/AddTenantForm";
-import type { AddTenantModalProps } from "@types";
+
+interface AddTenantModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
 
 export const AddTenantModal = ({ isOpen, onClose }: AddTenantModalProps) => {
     if (!isOpen) return null;

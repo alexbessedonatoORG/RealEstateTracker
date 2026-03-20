@@ -1,19 +1,22 @@
-export interface Tenant {
+export interface TenantRow {
   id: string;
-  property: string;
   property_id: string;
-  name: string;
-  email: string;
-  phone: string;
-  endOfContract: string;
+  full_name: string;
+  email: string | null;
+  phone: string | null;
+  created_at: string | null;
+  end_of_contract: string | null;
+  property?: { name: string };
 }
 
-export interface AddTenantFormValues {
+export interface Tenant {
+  id: string;
+  propertyId: string;
   property: string;
-  property_id: string;
-  name: string;
-  email: string;
-  phone: string;
-  endOfContract: string;
+  fullName: string;
+  email: string | null;
+  phone: string | null;
+  createdAt: string | null;
+  endOfContract: string | null;
 }
 
