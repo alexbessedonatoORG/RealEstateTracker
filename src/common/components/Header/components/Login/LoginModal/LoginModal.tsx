@@ -1,7 +1,6 @@
 import { LoginForm } from "../LoginForm/LoginForm";
-import type { LoginModalProps } from "@types";
 
-export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
+export const LoginModal = ({ isOpen, onClose }: any) => {
 
     if (!isOpen) return null;
 

@@ -1,7 +1,6 @@
 import { AddPropertyForm } from "./AddPropertyForm/AddPropertyForm";
-import type { AddPropertyModalProps } from "@types";
 
-export const AddPropertyModal = ({ isOpen, onClose }: AddPropertyModalProps) => {
+export const AddPropertyModal = ({ isOpen, onClose }: any) => {
 
     if (!isOpen) return null;
 
