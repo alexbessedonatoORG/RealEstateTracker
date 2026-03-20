@@ -1,7 +1,6 @@
 import { SignUpForm } from "../SignUpForm/SignUpForm";
-import type { SignUpModalProps } from "@types";
 
-export const SignUpModal = ({ isOpen, onClose }: SignUpModalProps) => {
+export const SignUpModal = ({ isOpen, onClose }: any) => {
 
     if (!isOpen) return null;
 

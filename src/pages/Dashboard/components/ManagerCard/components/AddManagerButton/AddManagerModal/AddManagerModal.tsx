@@ -1,7 +1,6 @@
 import { AddManagerForm } from "./AddManagerForm/AddManagerForm";
-import type { AddManagerModalProps } from "@types";
 
-export const AddManagerModal = ({ isOpen, onClose }: AddManagerModalProps) => {
+export const AddManagerModal = ({ isOpen, onClose }: any) => {
     if (!isOpen) return null;
 
     return (
